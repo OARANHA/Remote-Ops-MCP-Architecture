@@ -1,0 +1,77 @@
+# Remote Ops MCP Configuration
+# This file contains NO SECRETS - only target metadata and configuration
+# SSH credentials are loaded from secure credential store at runtime
+
+server:
+  port: 3000
+  host: 0.0.0.0
+  protocolVersion: "2026-07-28"
+
+ssh:
+  connectTimeout: 5000      # ms
+  commandTimeout: 30000     # ms
+  poolSize: 3               # connections per target
+  idleTimeout: 60000        # ms
+
+security:
+  maxLogLines: 100
+  maxFileSize: 100000       # bytes
+  maxOutputSize: 100000     # bytes
+  denyPatterns:
+    - '\.env$'
+    - '\.pem$'
+    - '\.key$'
+    - 'id_rsa'
+    - 'id_ed25519'
+    - 'credentials'
+    - 'secrets'
+    - 'tokens'
+    - '\.ssh'
+    - '/etc/shadow'
+    - '/etc/passwd'
+
+audit:
+  enabled: true
+  logLevel: info
+  logPath: ./logs/audit.log
+
+# Target Registry
+# Each target represents a VPS that can be operated through the MCP
+targets:
+  wandora-prod:
+    id: wandora-prod
+    host: 13.140.190.149
+    port: 22
+    username: ops-mcp
+    environment: production
+    credentialRef: wandora-prod-ssh    # Reference to secure credential store
+    hostKeyFingerprint: "SHA256:example_fingerprint_here"
+    allowedPaths:
+      - /opt/wandora
+    allowedServices:
+      - wandora-core
+      - wandora-web
+    capabilityProfile: prod-read-mostly
+    disabled: false
+    verifiers:
+      runtime-health:
+        executable: /opt/wandora/scripts/health-check.sh
+        args: ["--json"]
+        timeout: 30
+
+  # Example of additional targets (not yet configured)
+  # medicspro-prod:
+  #   id: medicspro-prod
+  #   host: "***.***.***.***"
+  #   port: 22
+  #   username: ops-mcp
+  #   environment: production
+  #   credentialRef: medicspro-prod-ssh
+  #   hostKeyFingerprint: "SHA256:..."
+  #   allowedPaths:
+  #     - /opt/medicspro
+  #   allowedServices:
+  #     - medicspro-api
+  #     - medicspro-web
+  #   capabilityProfile: prod-read-mostly
+  #   disabled: false
