@@ -99,6 +99,7 @@ function Sidebar() {
   
   const links = [
     { to: '/', icon: <Activity size={18} />, label: 'Dashboard' },
+    { to: '/how-to-use', icon: <Zap size={18} />, label: 'Como Usar' },
     { to: '/architecture', icon: <Layers size={18} />, label: 'Architecture' },
     { to: '/targets', icon: <Target size={18} />, label: 'Targets' },
     { to: '/capabilities', icon: <Shield size={18} />, label: 'Capabilities' },
@@ -1337,6 +1338,491 @@ function ADRsPage() {
   );
 }
 
+// ============ HOW TO USE PAGE ============
+
+function HowToUsePage() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-white">Como Usar no ChatGPT</h1>
+        <p className="text-slate-400 mt-1">Guia prático passo a passo para conectar e usar o Remote Ops MCP</p>
+      </div>
+
+      {/* Overview */}
+      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-5">
+        <div className="flex items-start gap-3">
+          <Info size={20} className="text-emerald-400 shrink-0 mt-0.5" />
+          <div>
+            <h3 className="text-emerald-400 font-semibold text-sm">Resumo Rápido</h3>
+            <p className="text-slate-300 text-sm mt-1">
+              O Remote Ops MCP permite que o ChatGPT consulte e opere suas VPS de forma segura. 
+              Você fala em linguagem natural e o ChatGPT usa as ferramentas MCP para executar operações 
+              pré-aprovadas nos servidores autorizados.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Prerequisites */}
+      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <CheckCircle size={18} className="text-emerald-400" />
+          Pré-requisitos
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-slate-900/50 rounded-lg p-4">
+            <h4 className="text-white text-sm font-medium mb-2">O que você precisa ter:</h4>
+            <ul className="text-xs text-slate-300 space-y-2">
+              <li className="flex items-start gap-2">
+                <ChevronRight size={12} className="text-emerald-400 mt-0.5 shrink-0" />
+                Conta ChatGPT Plus, Team ou Enterprise
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight size={12} className="text-emerald-400 mt-0.5 shrink-0" />
+                Servidor MCP rodando (seu ou da equipe)
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight size={12} className="text-emerald-400 mt-0.5 shrink-0" />
+                URL do servidor MCP ou Tunnel ID
+              </li>
+              <li className="flex items-start gap-2">
+                <ChevronRight size={12} className="text-emerald-400 mt-0.5 shrink-0" />
+                Credenciais OAuth (fornecidas pelo admin)
+              </li>
+            </ul>
+          </div>
+          <div className="bg-slate-900/50 rounded-lg p-4">
+            <h4 className="text-white text-sm font-medium mb-2">O que NÃO é necessário:</h4>
+            <ul className="text-xs text-slate-300 space-y-2">
+              <li className="flex items-start gap-2">
+                <X size={12} className="text-red-400 mt-0.5 shrink-0" />
+                Saber IPs dos servidores
+              </li>
+              <li className="flex items-start gap-2">
+                <X size={12} className="text-red-400 mt-0.5 shrink-0" />
+                Senhas ou chaves SSH
+              </li>
+              <li className="flex items-start gap-2">
+                <X size={12} className="text-red-400 mt-0.5 shrink-0" />
+                Conhecimento técnico de Linux
+              </li>
+              <li className="flex items-start gap-2">
+                <X size={12} className="text-red-400 mt-0.5 shrink-0" />
+                Acesso direto ao terminal
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Step by Step */}
+      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+          <ArrowRight size={18} className="text-blue-400" />
+          Passo a Passo: Configurar no ChatGPT
+        </h2>
+
+        <div className="space-y-6">
+          {/* Step 1 */}
+          <div className="bg-slate-900/50 rounded-lg p-5 border-l-4 border-blue-500">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <span className="text-blue-400 font-bold text-sm">1</span>
+              </div>
+              <h3 className="text-white font-semibold">Acessar as Configurações do ChatGPT</h3>
+            </div>
+            <div className="ml-11 space-y-2">
+              <p className="text-slate-300 text-sm">1. Abra o ChatGPT no navegador</p>
+              <p className="text-slate-300 text-sm">2. Clique no seu perfil (canto superior direito)</p>
+              <p className="text-slate-300 text-sm">3. Selecione <strong className="text-white">"Settings"</strong> (Configurações)</p>
+              <p className="text-slate-300 text-sm">4. No menu lateral, clique em <strong className="text-white">"Connectors"</strong> ou <strong className="text-white">"More"</strong> → <strong className="text-white">"Connectors"</strong></p>
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="bg-slate-900/50 rounded-lg p-5 border-l-4 border-purple-500">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+                <span className="text-purple-400 font-bold text-sm">2</span>
+              </div>
+              <h3 className="text-white font-semibold">Adicionar Novo Connector</h3>
+            </div>
+            <div className="ml-11 space-y-2">
+              <p className="text-slate-300 text-sm">1. Clique em <strong className="text-white">"+ Create"</strong> ou <strong className="text-white">"Add Connector"</strong></p>
+              <p className="text-slate-300 text-sm">2. Selecione <strong className="text-white">"New Connector"</strong></p>
+              <p className="text-slate-300 text-sm">3. Dê um nome, ex: <code className="bg-slate-700 px-2 py-0.5 rounded text-emerald-400 text-xs">Remote Ops MCP</code></p>
+              <p className="text-slate-300 text-sm">4. Escolha o tipo: <strong className="text-white">"MCP Server"</strong></p>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="bg-slate-900/50 rounded-lg p-5 border-l-4 border-emerald-500">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                <span className="text-emerald-400 font-bold text-sm">3</span>
+              </div>
+              <h3 className="text-white font-semibold">Configurar a Conexão</h3>
+            </div>
+            <div className="ml-11 space-y-4">
+              <div>
+                <p className="text-slate-300 text-sm mb-2"><strong className="text-white">Opção A — Servidor Público (Remote MCP Server):</strong></p>
+                <div className="bg-slate-800 rounded p-3 font-mono text-xs">
+                  <p className="text-slate-400">Server URL:</p>
+                  <p className="text-emerald-400">https://ops-mcp.suaempresa.com/mcp</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-slate-300 text-sm mb-2"><strong className="text-white">Opção B — Tunnel Privado (Secure MCP Tunnel):</strong></p>
+                <div className="bg-slate-800 rounded p-3 font-mono text-xs">
+                  <p className="text-slate-400">Tunnel ID:</p>
+                  <p className="text-blue-400">tunnel_abc123xyz</p>
+                </div>
+              </div>
+              <div className="bg-amber-500/5 border border-amber-500/20 rounded-lg p-3">
+                <p className="text-amber-400 text-xs">
+                  <strong>⚠️ Importante:</strong> Peça a URL ou Tunnel ID para o administrador do MCP. 
+                  Não use URLs de fontes não confiáveis.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 4 */}
+          <div className="bg-slate-900/50 rounded-lg p-5 border-l-4 border-amber-500">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center">
+                <span className="text-amber-400 font-bold text-sm">4</span>
+              </div>
+              <h3 className="text-white font-semibold">Autenticação</h3>
+            </div>
+            <div className="ml-11 space-y-2">
+              <p className="text-slate-300 text-sm">1. O ChatGPT irá redirecionar para login OAuth</p>
+              <p className="text-slate-300 text-sm">2. Faça login com suas credenciais (fornecidas pelo admin)</p>
+              <p className="text-slate-300 text-sm">3. Autorize o acesso</p>
+              <p className="text-slate-300 text-sm">4. Volte ao ChatGPT — o connector estará ativo</p>
+            </div>
+          </div>
+
+          {/* Step 5 */}
+          <div className="bg-slate-900/50 rounded-lg p-5 border-l-4 border-cyan-500">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                <span className="text-cyan-400 font-bold text-sm">5</span>
+              </div>
+              <h3 className="text-white font-semibold">Configurar Aprovação</h3>
+            </div>
+            <div className="ml-11 space-y-2">
+              <p className="text-slate-300 text-sm">Para produção, configure:</p>
+              <div className="bg-slate-800 rounded p-3 font-mono text-xs mt-2">
+                <p className="text-slate-400">Require Approval: <span className="text-amber-400">"always"</span></p>
+              </div>
+              <p className="text-slate-300 text-sm mt-2">
+                Isso garante que toda operação precisa da sua aprovação antes de executar.
+              </p>
+            </div>
+          </div>
+
+          {/* Step 6 */}
+          <div className="bg-slate-900/50 rounded-lg p-5 border-l-4 border-emerald-500">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                <span className="text-emerald-400 font-bold text-sm">6</span>
+              </div>
+              <h3 className="text-white font-semibold">Pronto! Comece a Usar</h3>
+            </div>
+            <div className="ml-11">
+              <p className="text-slate-300 text-sm">
+                Agora você pode fazer perguntas em linguagem natural e o ChatGPT usará o MCP 
+                para consultar seus servidores.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Examples */}
+      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <Terminal size={18} className="text-emerald-400" />
+          Exemplos de Uso
+        </h2>
+        <div className="space-y-4">
+          {[
+            {
+              category: 'Verificar Status',
+              examples: [
+                '"Qual o status do servidor wandora-prod?"',
+                '"Como está o uso de disco na wandora?"',
+                '"Me mostre a memória disponível no servidor wandora"',
+                '"Quanto tempo o servidor wandora está rodando?"',
+              ]
+            },
+            {
+              category: 'Docker',
+              examples: [
+                '"Quais containers estão rodando na wandora?"',
+                '"Me mostre os logs do container wandora-core"',
+                '"O container wandora-web está saudável?"',
+                '"Me dê um inspect seguro do wandora-core"',
+              ]
+            },
+            {
+              category: 'Serviços',
+              examples: [
+                '"Qual o status do serviço wandora-core?"',
+                '"Me mostre os últimos logs do wandora-web"',
+                '"O serviço wandora-core está rodando normalmente?"',
+              ]
+            },
+            {
+              category: 'Git / Código',
+              examples: [
+                '"Qual o HEAD atual do repositório wandora?"',
+                '"Tem alterações não commitadas no wandora?"',
+                '"Me mostre um resumo do diff do wandora"',
+              ]
+            },
+            {
+              category: 'Arquivos',
+              examples: [
+                '"Liste o conteúdo de /opt/wandora"',
+                '"Leia o arquivo package.json do wandora"',
+                '"Quais arquivos existem em /opt/wandora/src?"',
+              ]
+            },
+            {
+              category: 'Verificações',
+              examples: [
+                '"Rode o verificador runtime-health na wandora"',
+                '"Me dê um resumo completo do runtime da wandora"',
+              ]
+            },
+          ].map((group, i) => (
+            <div key={i} className="bg-slate-900/50 rounded-lg p-4">
+              <h4 className="text-white text-sm font-medium mb-2">{group.category}</h4>
+              <div className="space-y-1.5">
+                {group.examples.map((ex, j) => (
+                  <div key={j} className="flex items-start gap-2">
+                    <ChevronRight size={12} className="text-emerald-400 mt-1 shrink-0" />
+                    <p className="text-slate-300 text-xs italic">{ex}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* What Happens Behind the Scenes */}
+      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <Eye size={18} className="text-purple-400" />
+          O Que Acontece nos Bastidores
+        </h2>
+        <div className="space-y-4">
+          <div className="bg-slate-900/50 rounded-lg p-4">
+            <p className="text-white text-sm font-medium mb-2">Quando você pergunta: "Qual o status da wandora?"</p>
+            <div className="space-y-2 text-xs text-slate-300">
+              <div className="flex items-start gap-2">
+                <span className="text-blue-400 font-mono shrink-0">1.</span>
+                <span>ChatGPT entende que precisa consultar um servidor</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-blue-400 font-mono shrink-0">2.</span>
+                <span>Chama a ferramenta <code className="bg-slate-700 px-1 rounded text-emerald-400">host_status(target="wandora-prod")</code></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-blue-400 font-mono shrink-0">3.</span>
+                <span>MCP verifica se você tem permissão → ✅</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-blue-400 font-mono shrink-0">4.</span>
+                <span>MCP resolve "wandora-prod" → IP, credenciais, etc (internamente)</span>
+              </div>
+              <div className="flex items-start gap gap-2">
+                <span className="text-blue-400 font-mono shrink-0">5.</span>
+                <span>MCP conecta via SSH (chave verificada) e executa comandos seguros</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-blue-400 font-mono shrink-0">6.</span>
+                <span>Resultado é sanitizado (sem secrets) e retornado</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-blue-400 font-mono shrink-0">7.</span>
+                <span>ChatGPT formata a resposta em linguagem natural para você</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Approval Flow */}
+      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <Shield size={18} className="text-amber-400" />
+          Fluxo de Aprovação
+        </h2>
+        <div className="bg-slate-900/50 rounded-lg p-4">
+          <p className="text-slate-300 text-sm mb-3">
+            Quando <code className="bg-slate-700 px-1 rounded text-amber-400">require_approval: "always"</code> está ativo:
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3 bg-slate-800 rounded p-3">
+              <div className="w-6 h-6 rounded bg-blue-500/20 flex items-center justify-center shrink-0">
+                <span className="text-blue-400 text-xs font-bold">1</span>
+              </div>
+              <div>
+                <p className="text-white text-xs font-medium">ChatGPT quer executar uma operação</p>
+                <p className="text-slate-400 text-xs mt-0.5">Ex: "Verificar status do wandora-prod"</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-slate-800 rounded p-3">
+              <div className="w-6 h-6 rounded bg-amber-500/20 flex items-center justify-center shrink-0">
+                <span className="text-amber-400 text-xs font-bold">2</span>
+              </div>
+              <div>
+                <p className="text-white text-xs font-medium">Aparece um popup pedindo sua aprovação</p>
+                <p className="text-slate-400 text-xs mt-0.5">"O ChatGPT quer executar: host_status no target wandora-prod. Permitir?"</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3 bg-slate-800 rounded p-3">
+              <div className="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center shrink-0">
+                <span className="text-emerald-400 text-xs font-bold">3</span>
+              </div>
+              <div>
+                <p className="text-white text-xs font-medium">Você clica em "Allow" (Permitir)</p>
+                <p className="text-slate-400 text-xs mt-0.5">A operação é executada e o resultado é mostrado</p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-4 bg-emerald-500/5 border border-emerald-500/20 rounded-lg p-3">
+            <p className="text-emerald-400 text-xs">
+              <strong>✓ Segurança:</strong> Você sempre vê o que será feito antes de aprovar. 
+              Operações de escrita (restart, deploy) exigem aprovação explícita.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Troubleshooting */}
+      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <AlertTriangle size={18} className="text-amber-400" />
+          Problemas Comuns
+        </h2>
+        <div className="space-y-3">
+          {[
+            {
+              problem: '"Connector não conecta"',
+              solution: 'Verifique se a URL está correta. Confirme com o admin se o servidor MCP está rodando. Verifique se seu token OAuth não expirou.'
+            },
+            {
+              problem: '"Erro de autenticação"',
+              solution: 'Seu token OAuth pode ter expirado. Reconecte o connector nas configurações. Se persistir, peça novas credenciais ao admin.'
+            },
+            {
+              problem: '"Acesso negado / Capability denied"',
+              solution: 'Você não tem permissão para essa operação. Contacte o admin para verificar seu role e as capabilities atribuídas.'
+            },
+            {
+              problem: '"Target não encontrado"',
+              solution: 'Verifique o nome exato do target. Use "targets_list" para ver todos os targets disponíveis.'
+            },
+            {
+              problem: '"Servidor indisponível"',
+              solution: 'O target pode estar offline. Tente novamente em alguns minutos. Se persistir, contacte o admin.'
+            },
+          ].map((item, i) => (
+            <div key={i} className="bg-slate-900/50 rounded-lg p-4">
+              <p className="text-amber-400 text-sm font-medium">{item.problem}</p>
+              <p className="text-slate-300 text-xs mt-1">{item.solution}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Quick Reference */}
+      <div className="bg-slate-800/50 border border-slate-700 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+          <BookOpen size={18} className="text-blue-400" />
+          Referência Rápida
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-slate-900/50 rounded-lg p-4">
+            <h4 className="text-white text-sm font-medium mb-2">Targets Disponíveis</h4>
+            <div className="space-y-1">
+              {targets.filter(t => t.status === 'active').map(t => (
+                <div key={t.id} className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                  <code className="text-emerald-400 text-xs">{t.id}</code>
+                </div>
+              ))}
+              {targets.filter(t => t.status !== 'active').map(t => (
+                <div key={t.id} className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-slate-500 rounded-full"></div>
+                  <code className="text-slate-500 text-xs">{t.id}</code>
+                  <span className="text-slate-600 text-xs">(em breve)</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-slate-900/50 rounded-lg p-4">
+            <h4 className="text-white text-sm font-medium mb-2">O que você PODE fazer</h4>
+            <ul className="text-xs text-slate-300 space-y-1.5">
+              <li>✓ Ver status do servidor</li>
+              <li>✓ Ver uso de disco e memória</li>
+              <li>✓ Listar containers Docker</li>
+              <li>✓ Ler logs (limitados)</li>
+              <li>✓ Ver status de serviços</li>
+              <li>✓ Ver status Git</li>
+              <li>✓ Ler arquivos permitidos</li>
+              <li>✓ Rodar verificadores</li>
+            </ul>
+          </div>
+          <div className="bg-slate-900/50 rounded-lg p-4">
+            <h4 className="text-white text-sm font-medium mb-2">O que você NÃO PODE fazer</h4>
+            <ul className="text-xs text-slate-300 space-y-1.5">
+              <li>✗ Executar comandos arbitrários</li>
+              <li>✗ Acessar arquivos de senha/chave</li>
+              <li>✗ Modificar o servidor</li>
+              <li>✗ Reiniciar serviços (V2)</li>
+              <li>✗ Fazer deploy (V2)</li>
+              <li>✗ Acessar outros servidores</li>
+              <li>✗ Ver secrets/tokens</li>
+              <li>✗ Escalar permissões</li>
+            </ul>
+          </div>
+          <div className="bg-slate-900/50 rounded-lg p-4">
+            <h4 className="text-white text-sm font-medium mb-2">Dicas</h4>
+            <ul className="text-xs text-slate-300 space-y-1.5">
+              <li>• Seja específico sobre o target</li>
+              <li>• Use nomes completos dos serviços</li>
+              <li>• Logs são limitados a 1000 linhas</li>
+              <li>• Arquivos devem estar em paths permitidos</li>
+              <li>• Toda operação é auditada</li>
+              <li>• Em dúvida, pergunte "o que posso fazer?"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact */}
+      <div className="bg-blue-500/5 border border-blue-500/20 rounded-xl p-5">
+        <div className="flex items-start gap-3">
+          <Info size={20} className="text-blue-400 shrink-0 mt-0.5" />
+          <div>
+            <h3 className="text-blue-400 font-semibold text-sm">Precisa de Ajuda?</h3>
+            <p className="text-slate-300 text-sm mt-1">
+              Se tiver problemas para conectar ou usar o Remote Ops MCP, contacte o administrador do sistema.
+              Eles podem verificar: status do servidor MCP, suas permissões, e configuração do connector.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ============ APP ============
 
 export default function App() {
@@ -1347,6 +1833,7 @@ export default function App() {
         <main className="lg:ml-64 p-4 lg:p-8 pt-16 lg:pt-8">
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/how-to-use" element={<HowToUsePage />} />
             <Route path="/architecture" element={<ArchitecturePage />} />
             <Route path="/targets" element={<TargetsPage />} />
             <Route path="/capabilities" element={<CapabilitiesPage />} />
